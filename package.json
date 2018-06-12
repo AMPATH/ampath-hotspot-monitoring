@@ -1,0 +1,22 @@
+{
+  "name": "ampath-hopspotmonitoring",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app/start.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "hapi": "^17.5.1",
+    "html2json": "^1.0.2",
+    "monk": "^6.0.6",
+    "tabletojson": "^0.9.4"
+  },
+  "devDependencies": {
+    "babel-preset-env": "^1.7.0",
+    "babel-register": "^6.26.0"
+  }
+}

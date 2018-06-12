@@ -1,0 +1,10 @@
+{
+    "apps" : [{
+      "name"        : "hotspot-monitoring-server",
+      "script"      : "/opt/app/app/start.js",
+      "watch"       : false,
+      "exec_interpreter" : "babel-node",
+      "exec_mode"        : "fork"
+    }]
+  }
+  
