@@ -48,19 +48,30 @@ export class MongoService {
         });
     }
 
-    resolveLocations(stats) {
+    resolveLocations(docs) {
         let that = this;
         return new Promise(function (resolve, reject) {
-            let resolvedStats = [];
+            let resolvedLocations = [];
             try {
-                for (let stat of stats) {
-                    let location = that.getLocation(stat.uuid);
-                    let resolvedStat = Object.assign({
-                        location
-                    }, stat);
-                    resolvedStats.push(resolvedStat);
+                for (let location of config.locations) {
+                    let statistics = docs.filter((obj) => {
+                        return obj.uuid === location.uuid;
+                    });
+                    if (statistics.length === 0) {
+                        continue;
+                    }
+                    statistics.map(function(item) { 
+                        delete item.uuid; 
+                        return item; 
+                    });
+                    let resolvedLocation = {
+                        uuid: location.uuid,
+                        name: location.name,
+                        statistics
+                    }
+                    resolvedLocations.push(resolvedLocation);
                 }
-                resolve(resolvedStats);
+                resolve(resolvedLocations);
             } catch (error) {
                 reject(error);
             }
