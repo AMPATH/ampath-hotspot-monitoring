@@ -2,5 +2,4 @@ node_modules
 Dockerfile
 *.md
 docker-compose.yml
-config/config.json
 package-lock.json

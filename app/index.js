@@ -8,7 +8,10 @@ import {
 
 const server = Hapi.server({
     port: 3000,
-    host: '0.0.0.0'
+    host: '0.0.0.0',
+    routes: {
+        cors: true
+    }
 });
 
 server.route({
@@ -37,7 +40,8 @@ server.route({
                 airTimeBalance,
                 airTimeExpiry,
                 dataBalance,
-                dataExpiry
+                dataExpiry,
+                dateTimeReceived: new Date()
             };
             let service = new MongoService();
             return service.saveBandWidthStats(finalStats);
@@ -54,7 +58,8 @@ server.route({
         let uuid = request.params.uuid;
         let service = new MongoService();
         let stats = Object.assign({
-            uuid
+            uuid,
+            dateTimeReceived: new Date()
         }, request.query);
         return service.saveHealthStats(stats);
 
@@ -66,8 +71,9 @@ server.route({
     method: 'GET',
     path: '/hotspot-health-stats',
     handler: (request, h) => {
+        let date =  request.query.date || new Date();
         let service = new MongoService();
-       return service.getHealthStats();
+        return service.getHealthStats(date);
     }
 });
 
@@ -75,8 +81,9 @@ server.route({
     method: 'GET',
     path: '/hotspot-bandwidth-stats',
     handler: (request, h) => {
+        let date =  request.query.date || new Date();
         let service = new MongoService();
-        return service.getBandWidthStats();
+        return service.getBandWidthStats(date);
     }
 });
 
