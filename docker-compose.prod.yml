@@ -3,6 +3,7 @@ services:
   hotspot-monitoring-app:
     container_name: hotspot-monitoring-app
     image: 10.50.80.56:5005/hotspot-monitoring-app:latest
+    restart: always
     ports:
       - "8900:8900"
     links:
@@ -11,6 +12,7 @@ services:
       - ./config:/opt/app/config
   hotspot-mongo-db:
     container_name: hotspot-mongo-db
+    restart: always
     ports:
       - "27017:27017"
     image: mongo
