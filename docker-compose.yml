@@ -1,14 +1,16 @@
 version: "3"
 services:
-  app:
-    container_name: app
+  hotspot-monitoring-app:
+    container_name: hotspot-monitoring-app
     build: .
     ports:
-      - "3000:3000"
+      - "8900:8900"
     links:
-      - mongo
-  mongo:
-    container_name: mongo
+      - hotspot-mongo-db
+  hotspot-mongo-db:
+    container_name: hotspot-mongo-db
+    ports:
+      - "27017:27017"
     image: mongo
     volumes:
       - ./data:/data/db

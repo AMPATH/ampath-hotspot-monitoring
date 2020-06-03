@@ -7,7 +7,7 @@ import {
 } from './services/mongo.service';
 
 const server = Hapi.server({
-    port: 3000,
+    port: 8900,
     host: '0.0.0.0',
     routes: {
         cors: true
