@@ -1,0 +1,18 @@
+version: "3"
+services:
+  hotspot-monitoring-app:
+    container_name: hotspot-monitoring-app
+    image: 10.50.80.56:5005/hotspot-monitoring-app:latest
+    ports:
+      - "8900:8900"
+    links:
+      - hotspot-mongo-db
+    volumes:
+      - ./config:/opt/app/config
+  hotspot-mongo-db:
+    container_name: hotspot-mongo-db
+    ports:
+      - "27017:27017"
+    image: mongo
+    volumes:
+      - ./data:/data/db
