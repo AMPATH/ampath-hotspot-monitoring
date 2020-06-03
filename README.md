@@ -21,7 +21,7 @@ modify config/config.json by changing the mongo url
 }
 ```
 start the containers
-`docker-compose -f docker-compose.prod.yml restart hotspot-monitoring-app`
+`docker-compose -f docker-compose.prod.yml up -d`
 
 
 
