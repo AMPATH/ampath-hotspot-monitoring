@@ -1,6 +1,6 @@
 {
   "mongo": {
-    "url":"localhost:27017/hotspotmonitoring"
+    "url":"hotspot-mongo-db:27017/hotspotmonitoring"
   },
   "locations": [{
       "location_id": 1,
